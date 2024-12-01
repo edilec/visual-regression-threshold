@@ -1,13 +1,18 @@
 {
   "name": "visual-regression-threshold",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Set visual change thresholds by region, component and intentional update.",
   "type": "module",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test"
+    "lint": "node --check src/index.mjs && node --check bin/visual-regression-threshold.mjs",
+    "test": "node --test",
+    "check": "npm run lint && npm test"
+  },
+  "bin": {
+    "visual-regression-threshold": "./bin/visual-regression-threshold.mjs"
   },
   "license": "MIT",
   "repository": {

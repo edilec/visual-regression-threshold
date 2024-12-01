@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "1",
+  "complete": true,
+  "baseline": { "width": 4, "height": 2, "pixels": ["#ffffffff", "#ffffffff", "#ffffffff", "#ffffffff", "#ffffffff", "#ffffffff", "#ffffffff", "#ffffffff"] },
+  "current": { "width": 4, "height": 2, "pixels": ["#000000ff", "#ffffffff", "#ffffffff", "#ffffffff", "#ffffffff", "#000000ff", "#ffffffff", "#ffffffff"] },
+  "policy": { "masks": [{ "x": 0, "y": 0, "width": 1, "height": 1 }], "pixelThreshold": 0, "maxChangedPixels": 0, "maxMeanLumaDelta": 0 }
+}
