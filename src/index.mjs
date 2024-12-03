@@ -76,7 +76,7 @@ export function compareRasters(document, { now = Date.now } = {}) {
   }
   if (!comparedPixels) return incomplete('no-comparison');
   const mean = lumaSum / comparedPixels;
-  const metrics = { comparedPixels, maskedPixels, changedPixels, meanLumaDelta: Math.round(mean * 1000) / 1000, pixelThreshold: policy.pixelThreshold, maxChangedPixels: policy.maxChangedPixels, maxMeanLumaDelta: policy.maxMeanLumaDelta };
+  const metrics = { comparedPixels, maskedPixels, changedPixels, meanLumaDelta: mean, pixelThreshold: policy.pixelThreshold, maxChangedPixels: policy.maxChangedPixels, maxMeanLumaDelta: policy.maxMeanLumaDelta };
   const dimensions = { width: before.width, height: before.height };
   const diffImage = { mimeType: 'image/x-portable-graymap', base64: Buffer.from(`P2\n${before.width} ${before.height}\n2\n${image.join('\n')}\n`, 'ascii').toString('base64') };
   const findings = [];

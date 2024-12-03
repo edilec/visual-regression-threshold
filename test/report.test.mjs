@@ -42,6 +42,10 @@ test('fully transparent RGB differences are not visible changes', () => {
   const after = ['#ff000000', ...Array(7).fill(W)];
   assert.equal(compareRasters(doc(before, after)).status, 'pass');
 });
+test('reported luma metric exposes the value that breached a zero threshold', () => {
+  const x = { ...doc(), baseline: raster(1, 1, [W]), current: raster(1, 1, ['#fffffe01']), policy: { masks: [], pixelThreshold: 0, maxChangedPixels: 1, maxMeanLumaDelta: 0 } };
+  const r = compareRasters(x); assert.equal(r.status, 'fail'); assert.equal(r.findings[0].ruleId, 'luma-budget-exceeded'); assert.ok(r.metrics.meanLumaDelta > 0);
+});
 test('pixel, mask, byte, depth and time limits enforce N and N+1', () => {
   const pixels = Array(LIMITS.pixels).fill(W); const max = { ...doc(), baseline: raster(64, 64, pixels), current: raster(64, 64, pixels) };
   assert.equal(compareRasters(max).status, 'pass');

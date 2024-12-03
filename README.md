@@ -28,7 +28,7 @@ Pixels are row-major `#RRGGBBAA` strings. Baseline and current dimensions must m
 
 ## Report and rules
 
-The v1 report records `dimensions`, `metrics` (compared/masked/changed pixels, mean luma delta, configured thresholds), sorted `findings`, and `diffImage`. `diffImage` is a base64-encoded portable graymap (`P2` PGM): `0` unchanged, `1` masked, `2` changed. It is bounded by the pixel cap and remains inside stdout; no output path is accepted. Findings use logical source role `@export`, referring to the exact input file, and a JSON pointer. No pixel values or source paths are echoed. Findings sort by UTF-16 code-unit `(location.file, location.pointer, ruleId)`.
+The v1 report records `dimensions`, `metrics` (compared/masked/changed pixels, unrounded mean luma delta, configured thresholds), sorted `findings`, and `diffImage`. The reported luma value is exactly the value compared with its threshold, including tiny nonzero differences. `diffImage` is a base64-encoded portable graymap (`P2` PGM): `0` unchanged, `1` masked, `2` changed. It is bounded by the pixel cap and remains inside stdout; no output path is accepted. Findings use logical source role `@export`, referring to the exact input file, and a JSON pointer. No pixel values or source paths are echoed. Findings sort by UTF-16 code-unit `(location.file, location.pointer, ruleId)`.
 
 | Rule | Severity | Status / exit |
 | --- | --- | --- |
